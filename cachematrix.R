@@ -3,9 +3,9 @@
 
 ## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix()) {
-
-}
+# makeCacheMatrix <- function(x = matrix()) {
+# 
+# }
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -14,7 +14,7 @@ makeCacheMatrix <- function(x = matrix()) {
     m <<- NULL
   }
   get <- function() x
-  setmatrix <- function(matrix) m <<- matrix
+  setmatrix <- function(matrix) m <<- solve
   getmatrix <- function() m
   list(set = set, get = get,
        setmatrix = setmatrix,
@@ -29,9 +29,9 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
+# cacheSolve <- function(x, ...) {
+#         ## Return a matrix that is the inverse of 'x'
+# }
 cacheSolve <- function(x, ...) {
   m <- x$getmean()
   if(!is.null(m)) {
@@ -39,7 +39,9 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   data <- x$get()
-  m <- mean(data, ...)
-  x$setmean(m)
+  m <- solve(matrix, ...)
+  x$setmatrix(m)
   m
 }
+
+
