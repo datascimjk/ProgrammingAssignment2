@@ -1,12 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## cachematrix.R
+## Use lexical scoping to memoize a potentially
+## long running computation
+## in this case, matrix inversion
 
-## Write a short comment describing this function
-
-# makeCacheMatrix <- function(x = matrix()) {
-# 
-# }
-
+## makeCacheMatrix creates a list
+## containing the functions to get/set a matrix
+## uses the <<- operator to cache values to be
+## looked up later
+## The inverted matrix will come through the getmatrix function
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
@@ -21,19 +22,13 @@ makeCacheMatrix <- function(x = matrix()) {
        getmatrix = getmatrix)
 }
 
-
-
-
-
-
-
-## Write a short comment describing this function
-
-# cacheSolve <- function(x, ...) {
-#         ## Return a matrix that is the inverse of 'x'
-# }
+## cacheSolve
+## check the global x value
+## if it exists, return that
+## otherwise, calculate the inverted matrix
+## and store it.
 cacheSolve <- function(x, ...) {
-  m <- x$getmean()
+  m <- x$getmatrix()
   if(!is.null(m)) {
     message("getting cached data")
     return(m)
@@ -43,5 +38,3 @@ cacheSolve <- function(x, ...) {
   x$setmatrix(m)
   m
 }
-
-
